@@ -1,0 +1,4 @@
+# Fixed before any results were seen. Tuning uses seeds 0-9 only; reporting uses seeds 10-29 only.
+psi_grid: [0.10, 0.15, 0.20, 0.25, 0.30]
+alpha_grid: [0.05, 0.01, 0.001, 0.0001]
+false_alarm_budget_per_100: 1.0   # max false alarms per 100 clean batches allowed when tuning

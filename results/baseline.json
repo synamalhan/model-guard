@@ -1,0 +1,6 @@
+{
+  "holdout_accuracy": 0.8515864892528148,
+  "holdout_f1": 0.648910411622276,
+  "seed": 42,
+  "reference_rows": 9768
+}

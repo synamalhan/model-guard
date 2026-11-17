@@ -1,0 +1,6 @@
+name: gradual_shift
+seed: 3
+batch_size: 500
+n_batches: 40
+label_delay: 3
+drift: {type: gradual_shift, start_batch: 15, feature: age, magnitude: 1.0, ramp_batches: 10}

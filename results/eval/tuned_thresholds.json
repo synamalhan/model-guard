@@ -1,0 +1,33 @@
+{
+  "tuned_on_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "false_alarm_budget_per_100": 1.0,
+  "consecutive": 3,
+  "settings": {
+    "psi": {
+      "psi_threshold": 0.1,
+      "alpha": null,
+      "within_budget": true
+    },
+    "ks": {
+      "psi_threshold": null,
+      "alpha": 0.05,
+      "within_budget": true
+    },
+    "both": {
+      "psi_threshold": 0.3,
+      "alpha": 0.05,
+      "within_budget": true
+    }
+  }
+}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modelguard"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["pandas==3.1.1", "scikit-learn==1.9.1", "scipy==1.18.1", "PyYAML==6.0.3", "streamlit==1.67.0", "altair==6.3.0"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "ruff==0.17.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+extend-exclude = [".claude"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # sorted imports on top of the default pyflakes/pycodestyle checks

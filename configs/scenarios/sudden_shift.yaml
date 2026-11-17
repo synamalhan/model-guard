@@ -1,0 +1,6 @@
+name: sudden_shift
+seed: 2
+batch_size: 500
+n_batches: 40
+label_delay: 3
+drift: {type: sudden_shift, start_batch: 15, feature: age, magnitude: 1.0}  # magnitude in reference std units

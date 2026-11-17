@@ -1,0 +1,13 @@
+# Conventional starting values, not tuned on this data.
+drift:
+  bins: 10            # quantile bins from the reference window
+  psi_threshold: 0.2  # 0.1 = watch, 0.25 = act (common convention)
+  alpha: 0.01         # KS / chi-square significance level
+  min_category_share: 0.01  # reference categories below this share are merged into __other__
+missing:
+  margin: 0.05        # flag if live null rate exceeds reference rate by this much
+performance:
+  window: 500         # most recent labeled rows used
+  max_drop: 0.05      # flag if metric falls this far below the reference holdout
+alerts:
+  consecutive: 3      # a monitor must breach this many batches in a row to alert
