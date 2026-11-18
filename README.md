@@ -1,5 +1,7 @@
 # ModelGuard
 
+![Architecture](docs/architecture.svg)
+
 [![CI](https://github.com/synamalhan/model-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/synamalhan/model-guard/actions/workflows/ci.yml)
 
 A deployed model rarely fails loudly: its input data shifts, a feature quietly goes missing, and accuracy erodes
