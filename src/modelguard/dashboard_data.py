@@ -58,3 +58,24 @@ def drift_start(con, scenario: str) -> int | None:
     if gt is None:
         raise ValueError(f"unknown scenario {scenario!r}")
     return gt["start_batch"]
+
+
+def summary(con, scenario: str) -> dict:
+    """Headline numbers for one scenario. `delay` counts batches from the true drift start to the first
+    alert at or after it; alerts before the start (or any alert on a clean stream) are `false_alarms`."""
+    gt = store.read_ground_truth(con, scenario)
+    if gt is None:
+        raise ValueError(f"unknown scenario {scenario!r}")
+    feed, start, r = alert_feed(con, scenario), gt["start_batch"], _results(con, scenario)
+    hits = feed["batch_index"] if start is None else feed.loc[feed["batch_index"] >= start, "batch_index"]
+    first = None if start is None or hits.empty else int(hits.min())
+    return {
+        "drift_type": gt["drift_type"],
+        "drift_feature": gt["params"].get("feature"),
+        "n_batches": 0 if r.empty else int(r["batch_index"].max()) + 1,  # 0 = simulated but monitors not run yet
+        "drift_start": start,
+        "n_alerts": len(feed),
+        "first_alert": first,
+        "delay": None if first is None else first - start,
+        "false_alarms": len(feed) if start is None else int((feed["batch_index"] < start).sum()),
+    }
