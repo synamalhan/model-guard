@@ -81,3 +81,20 @@ def test_plotted_p_values_are_floored_but_raw_kept(con):
     ks = dd.drift_series(con, "sudden_shift", "age").query("monitor == 'ks'")
     assert ks["value"].min() == dd.P_FLOOR and ks["p_value"].min() < dd.P_FLOOR  # drifted batches floor out
     assert ks["value"].max() <= 1 and (ks["value"] >= dd.P_FLOOR).all()
+
+
+def test_summary_counts_delay_from_true_start(con):
+    s = dd.summary(con, "sudden_shift")
+    feed = dd.alert_feed(con, "sudden_shift")
+    assert s["drift_start"] == 15 and s["n_batches"] == SC.n_batches and s["n_alerts"] == len(feed)
+    assert s["first_alert"] == feed["batch_index"].min() and s["delay"] == s["first_alert"] - 15
+    assert s["false_alarms"] == 0 and s["drift_type"] == "sudden_shift"
+    with pytest.raises(ValueError):
+        dd.summary(con, "nope")
+
+
+def test_summary_of_scenario_without_monitor_results(tmp_path):
+    c = store.connect(str(tmp_path / "sim.db"))
+    c.execute("INSERT INTO ground_truth (scenario, drift_type, start_batch, params) VALUES ('clean', 'none', NULL, '{}')")
+    s = dd.summary(c, "clean")
+    assert s["n_batches"] == 0 and s["n_alerts"] == 0 and s["delay"] is None and s["drift_feature"] is None

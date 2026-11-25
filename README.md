@@ -9,7 +9,7 @@ per feature, and follows rolling accuracy and F1 as delayed labels arrive. It ra
 consecutive bad batches, so one noisy batch does not page anyone. A drift simulator with known ground truth lets
 you measure how fast, and how reliably, the monitors notice.
 
-Demo GIF: TODO (to be recorded and saved as `docs/demo.gif`).
+![ModelGuard dashboard: scenario summary, detection delay and the alert feed](docs/images/dashboard-overview.png)
 
 ## Architecture
 
@@ -62,6 +62,21 @@ make demo      # simulates a sudden shift and opens the dashboard
 
 Datasets and model weights are never committed. `make train` downloads the data and verifies its checksum; see
 [docs/DATA.md](docs/DATA.md) for the source and license.
+
+## Dashboard
+
+`make demo` opens the dashboard on the sudden-shift scenario. The header shows when drift was injected, when the first
+alert fired and how many batches that took; each tab explains its own chart. Every scenario has a shareable URL, for
+example `?scenario=Missing%20feature`.
+
+| Feature drift | Missing values |
+|---|---|
+| ![KS and PSI on the drifted feature, with the true drift start shaded and breaching batches in red](docs/images/dashboard-drift.png) | ![Heatmap of missing-value rate per feature; occupation turns pink when the missing-feature scenario starts](docs/images/dashboard-missing.png) |
+| **Model performance** | |
+| ![Rolling accuracy and F1 against their dashed alert floors](docs/images/dashboard-performance.png) | |
+
+Screenshots: sudden-shift scenario from `make demo`, except Missing values, which is the missing-feature scenario
+from `make simulate`.
 
 ## Results
 

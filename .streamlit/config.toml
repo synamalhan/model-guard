@@ -1,0 +1,72 @@
+# Dashboard theme, adapted from Streamlit's bundled dense-dashboard template; light/dark toggle stays available.
+
+[theme]
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "10px"
+buttonRadius = "10px"
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+baseFontSize = 14
+headingFontSizes = ["32px", "22px", "18px", "16px", "14px", "12px"]
+headingFontWeights = [800, 700, 600, 600, 500, 500]
+metricValueFontWeight = 700
+linkUnderline = false
+paddingTop = "1rem"
+paddingBottom = "3rem"
+
+[theme.light]
+primaryColor = "#6D28D9"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F3FF"
+codeBackgroundColor = "#F5F3FF"
+textColor = "#1E1B4B"
+linkColor = "#6D28D9"
+borderColor = "#DDD6FE"
+greenColor = "#059669"
+redColor = "#E11D48"
+yellowColor = "#D97706"
+orangeColor = "#EA580C"
+blueColor = "#2563EB"
+violetColor = "#7C3AED"
+grayColor = "#64748B"
+chartCategoricalColors = ["#7C3AED", "#0EA5E9", "#F59E0B", "#10B981", "#E11D48", "#EC4899", "#64748B", "#14B8A6"]
+dataframeBorderColor = "#DDD6FE"
+dataframeHeaderBackgroundColor = "#EDE9FE"
+dataframeHeaderTextColor = "#1E1B4B"
+
+[theme.dark]
+primaryColor = "#A78BFA"
+backgroundColor = "#0F0B1E"
+secondaryBackgroundColor = "#1C1633"
+codeBackgroundColor = "#1C1633"
+textColor = "#EDE9FE"
+linkColor = "#C4B5FD"
+borderColor = "#3B2F63"
+greenColor = "#34D399"
+redColor = "#FB7185"
+yellowColor = "#FBBF24"
+orangeColor = "#FB923C"
+blueColor = "#60A5FA"
+violetColor = "#A78BFA"
+grayColor = "#94A3B8"
+chartCategoricalColors = ["#A78BFA", "#38BDF8", "#FBBF24", "#34D399", "#FB7185", "#F472B6", "#94A3B8", "#2DD4BF"]
+dataframeBorderColor = "#3B2F63"
+dataframeHeaderBackgroundColor = "#1C1633"
+dataframeHeaderTextColor = "#F5F3FF"
+
+[theme.light.sidebar]
+backgroundColor = "#F5F3FF"
+secondaryBackgroundColor = "#EDE9FE"
+textColor = "#1E1B4B"
+borderColor = "#DDD6FE"
+
+[theme.dark.sidebar]
+backgroundColor = "#0A0716"
+secondaryBackgroundColor = "#1C1633"
+textColor = "#EDE9FE"
+borderColor = "#3B2F63"
+
+[client]
+toolbarMode = "minimal"  # hide developer-only menu items such as Deploy
